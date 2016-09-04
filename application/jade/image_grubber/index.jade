@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+    - $this->load->helper('form');
+    .jumbotron
+        h1 Awesome Image Grubber!
+        p This is the most awesome ultra super #1 image grubber in the world!
+    .row
+        .generated-content
+            include  partials/form

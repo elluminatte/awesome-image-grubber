@@ -1,0 +1,10 @@
+.col-sm-12
+    .grub-form-container
+        !=form_open('image_grubber/grub_images_by_tag', 'id="_grub-form", class="_grub-form"')
+        !=form_label('Enter your tag to grub it!', 'tag')
+        .input-group.input-group-lg._tag-input-group
+            span.input-group-addon
+                | #
+            !=form_input(['name' => 'tag', 'id' => 'tag', 'maxlength' => '50', 'type' => 'text', 'class' => 'form-control', 'placeholder' => 'Enter your tag to grub it!','required' => 'required'])
+        !=form_submit('submit_btn', 'Go!', ['class' => 'btn btn-lg btn-success btn-block _btn-submit-grub'])
+        !=form_close()

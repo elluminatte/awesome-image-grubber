@@ -1,0 +1,36 @@
+:php
+    defined('BASEPATH') OR exit('No direct script access allowed');
+
+- $this->load->helper('url')
+doctype html
+html(lang="en")
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+
+    title
+        | Awesome Image Grubber
+
+    link(rel='icon' type='image/png' href!=base_url()+'favicon.ico')
+
+    link(href!=base_url()+'node_modules/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
+
+    link(href!=base_url()+'assets/dist/css/image_grubber/styles.css', rel='stylesheet')
+
+    link(href!=base_url()+'node_modules/slick-carousel/slick/slick.css', rel='stylesheet')
+    link(href!=base_url()+'node_modules/slick-carousel/slick/slick-theme.css', rel='stylesheet')
+
+
+body
+    .content
+        .container
+            .waiter-overlay
+            block content
+
+    script(src!=base_url()+'node_modules/jquery/dist/jquery.min.js')
+    script(src!=base_url()+'node_modules/bootstrap/dist/js/bootstrap.min.js')
+
+    script(src!=base_url() + 'node_modules/jquery-form/jquery.form.js')
+    script(src!=base_url() + 'assets/dist/js/image_grubber/form.js')
+    script(src!=base_url() + 'node_modules/slick-carousel/slick/slick.min.js')

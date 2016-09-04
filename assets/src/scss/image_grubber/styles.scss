@@ -1,0 +1,52 @@
+$waiter-overlay-background-color: rgba(255, 255, 255, .8);
+$gallery-arrows-color: #333;
+
+body {
+  padding-top: 2em;
+
+  .content {
+
+    .grub-form-container {
+
+      ._grub-form {
+
+        ._tag-input-group {
+          margin-bottom: 1em;
+        }
+
+      }
+
+    }
+
+    .waiter-overlay {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: $waiter-overlay-background-color url('../../images/ajax-loader.gif') 50% 50% no-repeat;
+    }
+
+    &.-loading {
+      overflow: hidden;
+
+      .waiter-overlay {
+        display: block;
+      }
+
+    }
+
+    .images-gallery {
+
+      .slick-prev, .slick-next {
+        &:before {
+          color: $gallery-arrows-color;
+        }
+      }
+
+    }
+  }
+
+}
