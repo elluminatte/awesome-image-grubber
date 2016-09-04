@@ -12,7 +12,7 @@ class Image_grubber extends CI_Controller
     /**
      * How much images should grub
      */
-    const IMAGES_QUANTITY = 10;
+    const IMAGES_QUANTITY = 100;
 
     /**
      * Max length of search tag
