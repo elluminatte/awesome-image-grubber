@@ -10,11 +10,16 @@
   "license": "ISC",
   "devDependencies": {
     "del": "^2.2.2",
-    "gulp-sass": "^2.3.2"
+    "gulp-jade-php": "^2.0.0-0",
+    "gulp-sass": "^2.3.2",
+    "jade-php": "^0.1.4"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "install": "^0.8.1",
     "jquery": "^3.1.0",
-    "jquery-form": "^3.50.0"
+    "jquery-form": "^3.50.0",
+    "npm": "^3.10.6",
+    "slick-carousel": "^1.6.0"
   }
 }
