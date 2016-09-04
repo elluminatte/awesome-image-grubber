@@ -25,6 +25,7 @@ Installation
 3. Run gulp default
 4. Move application/config/config.php.template to application/config/config.php and change base url
 5. Move application/config/search.php.template to application/config/search.php and change search credentials
+6. Make /media folder writable
 
 *******
 License
