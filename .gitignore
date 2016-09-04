@@ -34,3 +34,7 @@ media/*
 
 application/views/*
 
+application/config/config.php
+application/config/search.php
+
+
