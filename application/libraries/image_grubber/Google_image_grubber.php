@@ -12,26 +12,61 @@ require_once 'Image_grubber_interface.php';
 class Google_image_grubber implements Image_grubber_interface
 {
 
+    /**
+     * address of google search api
+     */
     const GOOGLE_SEARCH_URL = 'https://www.googleapis.com/customsearch/v1';
 
+    /**
+     * google max images per request
+     */
     const MAX_RESULTS_PER_REQUEST = 10;
 
+    /**
+     * google search type
+     */
     const SEARCH_TYPE = 'image';
 
+    /**
+     * images size
+     */
     const IMAGE_SIZE = 'large';
 
+    /**
+     * @var mixed engine id of google custom search
+     */
     private $search_engine_id;
 
+    /**
+     * @var mixed google developer api key
+     */
     private $api_key;
 
+    /**
+     * @var int search result start from
+     */
     private $start_index;
 
+    /**
+     * @var string api search string
+     */
     private $query_string;
 
+    /**
+     * @var string tag to search
+     */
     private $key_word;
 
+    /**
+     * @var string folder for image saving
+     */
     private $images_folder;
 
+    /**
+     * Google_image_grubber constructor.
+     *
+     * @param array $params constructor parameters
+     */
     public function __construct(array $params)
     {
         $CI =& get_instance();
@@ -45,6 +80,13 @@ class Google_image_grubber implements Image_grubber_interface
         $this->api_key = $params['api_key'];
     }
 
+    /**
+     * @param string $key_word tag to search
+     * @param int    $images_quantity images quantity to search
+     *
+     * @return bool - grub results
+     * @throws Exception
+     */
     public function grub_images(string $key_word, int $images_quantity): bool
     {
         $this->key_word = $key_word;
@@ -90,6 +132,9 @@ class Google_image_grubber implements Image_grubber_interface
         return true;
     }
 
+    /**
+     * @return bool query string construction result
+     */
     private function construct_query_string(): bool
     {
         $this->query_string = self::GOOGLE_SEARCH_URL . '?'
@@ -104,6 +149,9 @@ class Google_image_grubber implements Image_grubber_interface
         return true;
     }
 
+    /**
+     * @return array array of server json answer
+     */
     private function send_query_request(): array
     {
         $ch = curl_init();
@@ -117,6 +165,12 @@ class Google_image_grubber implements Image_grubber_interface
         return json_decode($body, true);
     }
 
+    /**
+     * @param string $url - url for download
+     *
+     * @return bool - download result
+     * @throws Exception
+     */
     public function download_image_by_url(string $url): bool
     {
         $ch = curl_init($url);
@@ -146,11 +200,19 @@ class Google_image_grubber implements Image_grubber_interface
         return true;
     }
 
+    /**
+     * @param string $url - url of image
+     *
+     * @return string - extension of image
+     */
     private function get_remote_file_extension(string $url): string
     {
         return '.' . pathinfo($url, PATHINFO_EXTENSION);
     }
 
+    /**
+     * @return string - sanitized directory name for image saving
+     */
     private function get_save_directory_name(): string
     {
         $CI =& get_instance();

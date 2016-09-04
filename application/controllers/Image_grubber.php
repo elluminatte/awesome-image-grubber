@@ -9,9 +9,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Image_grubber extends CI_Controller
 {
-
+    /**
+     * How much images should grub
+     */
     const IMAGES_QUANTITY = 10;
 
+    /**
+     * Max length of search tag
+     */
     const MAX_TAG_LENGTH = 50;
 
     public function index()
@@ -79,6 +84,9 @@ class Image_grubber extends CI_Controller
         return;
     }
 
+    /** gallery show action
+     * @param $tag - tag for images search
+     */
     public function show_images_by_tag($tag)
     {
         try {
@@ -123,6 +131,11 @@ class Image_grubber extends CI_Controller
         return;
     }
 
+    /**
+     * @param $sanitized_tag - hashed tag to search in folder
+     *
+     * @return bool - existence check result
+     */
     private function check_tagged_images_exist($sanitized_tag): bool
     {
         $this->load->helper('directory');

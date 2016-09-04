@@ -512,6 +512,8 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+// Folder for grubbed images saving
 $config['images_directory'] = 'media/';
 
+// Full path to images folder
 $config['images_directory_path'] = FCPATH . $config['images_directory'];
