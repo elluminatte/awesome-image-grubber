@@ -47,7 +47,7 @@ class Image_grubber extends CI_Controller
             $this->load->helper('url');
 
             if ($does_images_exist) {
-                redirect('image_grubber/show_images_by_tag/' . $tag);
+                redirect('image_grubber/show_images_by_tag/' . urlencode($tag));
             }
 
             $google_api_key = $this->config->item('google_api_key');
@@ -63,6 +63,8 @@ class Image_grubber extends CI_Controller
 
             $this->image_grubber->grub_images($tag, self::IMAGES_QUANTITY);
         } catch (Exception $e) {
+            log_message('error', $e->getMessage());
+
             $this->load->view(
                 'image_grubber/partials/error', [
                     'errors' => [
@@ -73,13 +75,15 @@ class Image_grubber extends CI_Controller
 
             return;
         }
-        redirect('image_grubber/show_images_by_tag/' . $tag);
+        redirect('image_grubber/show_images_by_tag/' . urlencode($tag));
         return;
     }
 
     public function show_images_by_tag($tag)
     {
         try {
+            $tag = urldecode($tag);
+
             $this->load->helper('filesystem');
 
             $sanitized_tag = sanitize_directory_name($tag);
@@ -104,6 +108,7 @@ class Image_grubber extends CI_Controller
                 ['images_directory' => $images_directory, 'images' => $images]
             );
         } catch (Exception $e) {
+            log_message('error', $e->getMessage());
 
             $this->load->view(
                 'image_grubber/partials/error', [
