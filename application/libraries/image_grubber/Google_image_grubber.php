@@ -30,10 +30,18 @@ class Google_image_grubber implements Image_grubber_interface
 
     private $key_word;
 
+    private $images_folder;
+
     public function __construct(array $params)
     {
+        $CI =& get_instance();
+
+        $this->images_folder = $CI->config->item('images_directory_path');
+
         $this->start_index = 1;
+
         $this->search_engine_id = $params['search_engine_id'];
+
         $this->api_key = $params['api_key'];
     }
 
@@ -71,6 +79,7 @@ class Google_image_grubber implements Image_grubber_interface
             if (!empty($grub_query_result['items'])) {
                 foreach ($grub_query_result['items'] as $item) {
                     $this->download_image_by_url($item['link']);
+
                     $this->start_index++;
                 }
                 $this->start_index++;
@@ -114,7 +123,7 @@ class Google_image_grubber implements Image_grubber_interface
 
         $file_name = uniqid() . $this->get_remote_file_extension($url);
 
-        $save_directory_name = FCPATH . 'media/'
+        $save_directory_name = $this->images_folder
             . $this->get_save_directory_name() . '/';
 
         if (!is_dir($save_directory_name)) {
