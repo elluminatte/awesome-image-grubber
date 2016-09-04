@@ -93,7 +93,7 @@ class Google_image_grubber implements Image_grubber_interface
 
         $this->construct_query_string();
 
-        $requestsQuantity = $images_quantity / self::MAX_RESULTS_PER_REQUEST;
+        $requestsQuantity = ceil($images_quantity / self::MAX_RESULTS_PER_REQUEST);
 
         for ($i = 1; $i <= $requestsQuantity; $i++) {
 
