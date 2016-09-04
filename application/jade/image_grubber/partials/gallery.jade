@@ -17,6 +17,9 @@
                     strong Oh!
                 p
                     | Something went wrong... Please try again later
+                p
+                    a(href!=base_url())
+                        | Ok, I will try now!
         - endif
 
 script(src!=base_url() + 'assets/dist/js/image_grubber/gallery.js')
