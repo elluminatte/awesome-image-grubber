@@ -1,0 +1,27 @@
+- $this->load->helper('url')
+
+.col-sm-12
+    .images-gallery
+        - if($images):
+            ._slick-slides
+                - foreach ($images as $image):
+                    img(src!=base_url() + $images_directory + '/' + $image, alt='Some awesome image here')
+                - endforeach
+            ._slick-thumbs
+                - foreach ($images as $image):
+                    img(src!=base_url() + $images_directory + '/' + $image, alt='Some awesome image here')
+                - endforeach
+        - else:
+            .alert.alert-warning
+                p
+                    strong Oh!
+                p
+                    | Something went wrong... Please try again later
+        - endif
+
+script(src!=base_url() + 'assets/dist/js/image_grubber/gallery.js')
+
+
+
+
+

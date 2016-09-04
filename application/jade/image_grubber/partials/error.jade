@@ -1,0 +1,26 @@
+.col-sm-12
+    - if($errors):
+        - foreach ($errors as $error):
+            .alert.alert-danger
+                p
+                    strong Oh!
+                p
+                    !=$error
+                p
+                    a(href!=base_url())
+                        | Ok, I will try now!
+        - endforeach
+    - else:
+        .alert.alert-danger
+            p
+                strong Oh!
+            p
+                | An error has occurred. Please try again later
+            p
+                a(href!=base_url())
+                    | Ok, I will try now!
+    - endif
+
+
+
+
