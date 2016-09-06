@@ -38,15 +38,6 @@ body {
 
     }
 
-    .images-gallery {
-
-      .slick-prev, .slick-next {
-        &:before {
-          color: $gallery-arrows-color;
-        }
-      }
-
-    }
   }
 
 }
