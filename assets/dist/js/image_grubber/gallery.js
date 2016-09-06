@@ -3,23 +3,23 @@
  */
 
 $(function () {
-    $('._slick-slides').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        asNavFor: '._slick-thumbs',
-        adaptiveHeight: true
+    $('._gallery-thumbnsils').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: true,
+        slideshow: false,
+        itemWidth: 100,
+        itemMargin: 5,
+        asNavFor: '._gallery-slider',
+        maxItems: 5
     });
 
-    $('._slick-thumbs').slick({
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        asNavFor: '._slick-slides',
-        dots: true,
-        arrows: true,
-        centerMode: true,
-        focusOnSelect: true,
-        adaptiveHeight: true
+    $('._gallery-slider').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: true,
+        slideshow: false,
+        sync: "._gallery-thumbnsils",
+        smoothHeight: true
     });
 });
